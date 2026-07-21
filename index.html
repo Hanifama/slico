@@ -1,0 +1,1755 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SLICO — Nikmati Kopi, Tanpa Diseduh</title>
+    <meta
+      name="description"
+      content="SLICO — Kopi Slice, inovasi kopi Indonesia yang bisa dinikmati langsung tanpa diseduh."
+    />
+    <meta name="theme-color" content="#5C3D2E" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="SLICO — Kopi Slice, inovasi kopi Indonesia yang bisa dinikmati langsung tanpa diseduh."
+    />
+    <meta
+      property="og:description"
+      content="A premium Indonesian coffee spread, hand-crafted in small batches. Discover SLICO."
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/png" href="assets/image/logo.png" />
+  <link rel="shortcut icon" type="image/png" href="assets/image/logo.png" />
+  
+  <!-- ===== APPLE TOUCH ICON (untuk iOS) ===== -->
+  <link rel="apple-touch-icon" href="assets/image/logo.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#5C3D2E",
+              dark: "#2D2D2D",
+              cream: "#FFF8F2",
+              beige: "#EADBC8",
+              gold: "#C89B3C",
+            },
+            fontFamily: {
+              display: ['"Playfair Display"', "serif"],
+              sub: ['"Cormorant Garamond"', "serif"],
+              body: ['"Poppins"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Animation libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Lenis untuk smooth scroll (opsional) -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  </head>
+
+  <body class="font-body bg-cream text-dark antialiased">
+    <!-- ==========================================================================
+     LOADING SCREEN
+     ========================================================================== -->
+    <div id="loader">
+      <div class="loader-inner">
+        <div class="loader-bean">
+          <svg
+            viewBox="0 0 32 44"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16 2C8 2 2 12 2 22C2 34 8 42 16 42C24 42 30 34 30 22C30 12 24 2 16 2Z"
+              fill="#FFF8F2"
+            />
+            <path
+              d="M16 4C13 12 13 32 16 40"
+              stroke="#C89B3C"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="loader-word">SLICO.</div>
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+
+    <!-- Scroll progress -->
+    <div id="scroll-progress"></div>
+
+    <!-- ==========================================================================
+     NAVBAR
+     ========================================================================== -->
+    <header id="navbar">
+      <div
+        class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between py-5"
+      >
+        <a href="#hero" class="flex items-center">
+          <img
+            src="assets/image/logo-bg.png"
+            alt="SLICO - Coffee Slice"
+            class="h-12 w-auto"
+          />
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-9 text-sm tracking-wide">
+          <a href="#story" class="nav-link" data-i18n="nav_story">Story</a>
+          <a href="#why" class="nav-link" data-i18n="nav_why">Why SLICO</a>
+          <a href="#product" class="nav-link" data-i18n="nav_product"
+            >Product</a
+          >
+          <a href="#ingredients" class="nav-link" data-i18n="nav_ingredients"
+            >Ingredients</a
+          >
+          <a href="#gallery" class="nav-link" data-i18n="nav_gallery"
+            >Gallery</a
+          >
+          <a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a>
+        </nav>
+
+        <div class="flex items-center gap-5">
+          <div class="lang-switch hidden sm:flex items-center gap-1.5 text-sm">
+            <button data-lang="id" class="px-2 py-1">ID</button>
+            <span class="opacity-30">/</span>
+            <button data-lang="en" class="px-2 py-1 active">EN</button>
+          </div>
+          <a
+            href="#cta"
+            class="btn btn-gold hidden md:inline-flex px-6 py-2.5 rounded-full text-sm tracking-wide"
+            data-i18n="nav_cta"
+            >Order Now</a
+          >
+
+          <button
+            id="menu-toggle"
+            class="lg:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5"
+            aria-label="Menu"
+          >
+            <span class="block w-6 h-px bg-primary"></span>
+            <span class="block w-6 h-px bg-primary"></span>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-cream/95 backdrop-blur-md border-t border-primary/10 px-6 py-6 flex flex-col gap-5 text-base"
+      >
+        <a href="#story" data-i18n="nav_story">Story</a>
+        <a href="#why" data-i18n="nav_why">Why SLICO</a>
+        <a href="#product" data-i18n="nav_product">Product</a>
+        <a href="#ingredients" data-i18n="nav_ingredients">Ingredients</a>
+        <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <div class="lang-switch flex items-center gap-2 pt-2">
+          <button data-lang="id" class="px-2 py-1">ID</button>
+          <span class="opacity-30">/</span>
+          <button data-lang="en" class="px-2 py-1 active">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ==========================================================================
+     HERO
+     ========================================================================== -->
+      <section id="hero" class="flex items-center">
+        <div class="hero-gradient-anim"></div>
+        <div
+          id="floating-beans"
+          class="absolute inset-0 overflow-hidden pointer-events-none z-[1]"
+        ></div>
+
+        <div
+          class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full grid lg:grid-cols-2 gap-12 items-center pt-32 pb-20"
+        >
+          <div>
+            <p
+              class="hero-eyebrow hero-anim reveal text-gold text-lg mb-5"
+              data-i18n="hero_eyebrow"
+            >
+              Indonesian Coffee, Reimagined
+            </p>
+            <h1
+              class="hero-title hero-anim reveal text-3xl sm:text-6xl md:text-5xl text-primary mb-3"
+            >
+              <span data-i18n="hero_title_1">Coffee,</span><br />
+              <span
+                class="italic font-sub font-medium text-dark"
+                data-i18n="hero_title_2"
+                >Spread Slowly.</span
+              >
+            </h1>
+            <p
+              class="hero-anim reveal mt-6 text-base md:text-lg max-w-md text-dark/70 leading-relaxed"
+              data-i18n="hero_sub"
+            >
+              A single-origin coffee spread, hand-roasted in West Java and
+              poured into every jar of SLICO.
+            </p>
+
+            <div
+              class="hero-anim reveal mt-10 flex flex-wrap items-center gap-4"
+            >
+              <a
+                href="#why"
+                class="btn btn-gold px-8 py-3.5 rounded-full text-sm tracking-wide"
+                data-i18n="hero_btn_discover"
+                >Discover</a
+              >
+              <a
+                href="#cta"
+                class="btn btn-outline px-8 py-3.5 rounded-full text-sm tracking-wide"
+                data-i18n="hero_btn_order"
+                >Order Now</a
+              >
+              <a
+                href="#story"
+                class="text-sm underline underline-offset-4 decoration-gold/50 text-dark/70 hover:text-primary transition"
+                data-i18n="hero_btn_story"
+                >Watch Story</a
+              >
+            </div>
+          </div>
+
+          <div class="relative flex justify-center items-center">
+            <div
+              class="hero-beans-back absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-beige/60 blur-2xl"
+            ></div>
+
+            <div id="hero-jar" class="jar-hero relative w-56 sm:w-64 md:w-80">
+              <svg
+                viewBox="0 0 300 420"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-full h-auto"
+              >
+                <defs>
+                  <!-- Coffee gradient -->
+                  <linearGradient id="coffeeReal" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#6F4527"/>
+                    <stop offset="25%" stop-color="#5C3D2E"/>
+                    <stop offset="60%" stop-color="#3A2419"/>
+                    <stop offset="100%" stop-color="#1C0F0A"/>
+                  </linearGradient>
+                  
+                  <!-- Texture pattern -->
+                  <pattern id="grainPattern" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+                    <rect width="6" height="6" fill="transparent"/>
+                    <circle cx="1" cy="1" r="1" fill="#2A1810" opacity="0.08"/>
+                    <circle cx="4" cy="3" r="0.8" fill="#8B5E3C" opacity="0.06"/>
+                    <circle cx="2" cy="5" r="0.6" fill="#C89B3C" opacity="0.04"/>
+                  </pattern>
+                  
+                  <!-- Shadow -->
+                  <filter id="realShadow">
+                    <feDropShadow dx="0" dy="15" stdDeviation="25" flood-color="#2A1810" flood-opacity="0.3"/>
+                  </filter>
+                </defs>
+                
+                <!-- Shadow -->
+                <ellipse cx="150" cy="405" rx="100" ry="12" fill="#2A1810" opacity="0.08"/>
+                
+                <!-- Main slice -->
+                <rect
+                  x="25"
+                  y="35"
+                  width="250"
+                  height="330"
+                  rx="45"
+                  fill="#FDF6EE"
+                  filter="url(#realShadow)"
+                  stroke="#D4AF37"
+                  stroke-opacity="0.08"
+                  stroke-width="2"
+                />
+                
+                <!-- Coffee layer -->
+                <rect
+                  x="30"
+                  y="115"
+                  width="240"
+                  height="245"
+                  rx="38"
+                  fill="url(#coffeeReal)"
+                />
+                
+                <!-- Texture overlay -->
+                <rect
+                  x="30"
+                  y="115"
+                  width="240"
+                  height="245"
+                  rx="38"
+                  fill="url(#grainPattern)"
+                />
+                
+                <!-- Slice lines (lapisan) -->
+                <g opacity="0.15">
+                  <path d="M30 140 Q150 158 270 140" stroke="#1C0F0A" stroke-width="2.5" fill="none"/>
+                  <path d="M30 165 Q150 183 270 165" stroke="#1C0F0A" stroke-width="2" fill="none"/>
+                  <path d="M30 190 Q150 208 270 190" stroke="#1C0F0A" stroke-width="1.5" fill="none"/>
+                  <path d="M30 215 Q150 233 270 215" stroke="#1C0F0A" stroke-width="1.5" fill="none"/>
+                  <path d="M30 240 Q150 258 270 240" stroke="#1C0F0A" stroke-width="1" fill="none"/>
+                  <path d="M30 265 Q150 283 270 265" stroke="#1C0F0A" stroke-width="1" fill="none"/>
+                  <path d="M30 290 Q150 308 270 290" stroke="#1C0F0A" stroke-width="1" fill="none"/>
+                </g>
+                
+                <!-- Coffee bean texture scattered -->
+                <g opacity="0.2">
+                  <ellipse cx="55" cy="155" rx="4" ry="7" fill="#2A1810" transform="rotate(-20 55 155)"/>
+                  <ellipse cx="85" cy="175" rx="3" ry="5" fill="#2A1810" transform="rotate(15 85 175)"/>
+                  <ellipse cx="120" cy="145" rx="4" ry="7" fill="#2A1810" transform="rotate(-35 120 145)"/>
+                  <ellipse cx="160" cy="165" rx="3" ry="6" fill="#2A1810" transform="rotate(25 160 165)"/>
+                  <ellipse cx="200" cy="150" rx="4" ry="7" fill="#2A1810" transform="rotate(-15 200 150)"/>
+                  <ellipse cx="235" cy="170" rx="3" ry="5" fill="#2A1810" transform="rotate(10 235 170)"/>
+                  <ellipse cx="70" cy="210" rx="3" ry="6" fill="#2A1810" transform="rotate(30 70 210)"/>
+                  <ellipse cx="105" cy="230" rx="4" ry="7" fill="#2A1810" transform="rotate(-25 105 230)"/>
+                  <ellipse cx="180" cy="220" rx="3" ry="5" fill="#2A1810" transform="rotate(15 180 220)"/>
+                  <ellipse cx="220" cy="235" rx="4" ry="7" fill="#2A1810" transform="rotate(-30 220 235)"/>
+                  <ellipse cx="65" cy="260" rx="3" ry="5" fill="#2A1810" transform="rotate(20 65 260)"/>
+                  <ellipse cx="145" cy="280" rx="4" ry="7" fill="#2A1810" transform="rotate(-10 145 280)"/>
+                  <ellipse cx="195" cy="275" rx="3" ry="5" fill="#2A1810" transform="rotate(25 195 275)"/>
+                </g>
+                
+                <!-- Gold top -->
+                <rect
+                  x="40"
+                  y="20"
+                  width="220"
+                  height="58"
+                  rx="18"
+                  fill="url(#coffeeBody)"  /* temporary, should be gold */
+                  stroke="#D4AF37"
+                  stroke-width="1"
+                />
+                
+                <!-- Gold gradient -->
+                <rect
+                  x="40"
+                  y="20"
+                  width="220"
+                  height="58"
+                  rx="18"
+                  fill="#C89B3C"
+                  opacity="0.95"
+                />
+                
+                <!-- Gold shine -->
+                <rect
+                  x="40"
+                  y="20"
+                  width="220"
+                  height="25"
+                  rx="18"
+                  fill="#D4AF37"
+                  opacity="0.3"
+                />
+                
+                <!-- SLICO text -->
+                <text
+                  x="150"
+                  y="53"
+                  text-anchor="middle"
+                  font-family="Playfair Display, serif"
+                  font-size="22"
+                  font-weight="700"
+                  fill="#FFFFFF"
+                  letter-spacing="7"
+                >
+                  SLICO
+                </text>
+                
+                <!-- Label -->
+                <rect
+                  x="80"
+                  y="180"
+                  width="140"
+                  height="70"
+                  rx="14"
+                  fill="#FFFFFF"
+                  opacity="0.95"
+                  stroke="#D4AF37"
+                  stroke-width="0.5"
+                  stroke-opacity="0.2"
+                />
+                
+                <!-- Label text -->
+                <text
+                  x="150"
+                  y="208"
+                  text-anchor="middle"
+                  font-family="Playfair Display, serif"
+                  font-size="17"
+                  font-weight="600"
+                  fill="#5C3D2E"
+                  letter-spacing="3.5"
+                >
+                  SLICE
+                </text>
+                
+                <text
+                  x="150"
+                  y="232"
+                  text-anchor="middle"
+                  font-family="Playfair Display, serif"
+                  font-size="17"
+                  font-weight="700"
+                  fill="#D4AF37"
+                  letter-spacing="4.5"
+                >
+                  COFFEE
+                </text>
+  
+  <!-- Decorative dots -->
+  <g opacity="0.3">
+    <circle cx="110" cy="330" r="3" fill="#C89B3C"/>
+    <circle cx="150" cy="330" r="3" fill="#C89B3C"/>
+    <circle cx="190" cy="330" r="3" fill="#C89B3C"/>
+  </g>
+  
+  <!-- Side cut effect -->
+  <path d="M30 125 L30 355" stroke="#2A1810" stroke-width="2" stroke-opacity="0.05" fill="none"/>
+  <path d="M270 125 L270 355" stroke="#2A1810" stroke-width="2" stroke-opacity="0.05" fill="none"/>
+</svg>
+
+              <div class="steam s1"></div>
+              <div class="steam s2"></div>
+              <div class="steam s3"></div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-primary/60"
+        >
+          <span
+            class="scroll-cue text-[11px] tracking-widest"
+            data-i18n="scroll_cue"
+            >Scroll</span
+          >
+          <div class="scroll-cue-line"></div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+     BRAND STORY
+     ========================================================================== -->
+      <section
+        id="story"
+        class="relative py-28 md:py-36 bg-cream overflow-hidden"
+      >
+        <div
+          class="max-w-7xl mx-auto px-6 md:px-10 grid lg:grid-cols-12 gap-14 items-start"
+        >
+          <div class="lg:col-span-7">
+            <p
+              class="section-eyebrow reveal text-gold mb-4"
+              data-i18n="story_eyebrow"
+            >
+              The Beginning
+            </p>
+            <h2
+              class="reveal font-display text-4xl md:text-5xl text-primary mb-10 leading-tight"
+              data-i18n="story_title"
+            >
+              One Spoon of Java, Passed Down.
+            </h2>
+
+            <p
+              class="reveal mb-6 text-base md:text-lg leading-relaxed text-dark/75"
+              style="--d: 0.05s"
+              data-i18n="story_p1"
+            >
+              Slice Coffee began the way most good things in Indonesia do —
+              around a kitchen table, with a spoon and a pot of coffee no one
+              wanted to waste.
+            </p>
+            <p
+              class="reveal mb-6 text-base md:text-lg leading-relaxed text-dark/75"
+              style="--d: 0.15s"
+              data-i18n="story_p2"
+            >
+              In the highlands of West Java, farmers have long stirred leftover
+              coffee grounds into palm sugar and butter, spreading the result
+              over warm bread before the day's work. It was never sold. It was
+              simply shared.
+            </p>
+            <p
+              class="reveal mb-10 text-base md:text-lg leading-relaxed text-dark/75"
+              style="--d: 0.25s"
+              data-i18n="story_p3"
+            >
+              SLICO takes that quiet ritual and gives it a name, a jar, and a
+              place at your table — wherever your table happens to be in the
+              world.
+            </p>
+
+            <blockquote
+              class="reveal story-quote text-2xl md:text-3xl text-primary border-l-2 border-gold pl-6"
+              data-i18n="story_quote"
+            >
+              “Not a drink to rush through. A moment to spread, slowly, on
+              something warm.”
+            </blockquote>
+          </div>
+
+          <div class="lg:col-span-5 flex justify-center lg:justify-end">
+            <div
+              id="story-swirl-wrap"
+              class="story-swirl-wrap relative w-48 sm:w-56 lg:sticky lg:top-32"
+            >
+              <svg
+                viewBox="0 0 200 320"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-full h-auto"
+              >
+                <rect
+                  x="30"
+                  y="20"
+                  width="140"
+                  height="280"
+                  rx="22"
+                  fill="none"
+                  stroke="#5C3D2E"
+                  stroke-width="3"
+                />
+                <rect
+                  x="46"
+                  y="0"
+                  width="108"
+                  height="34"
+                  rx="8"
+                  fill="#C89B3C"
+                />
+                <clipPath id="jarClip">
+                  <rect x="33" y="23" width="134" height="274" rx="19" />
+                </clipPath>
+                <g clip-path="url(#jarClip)">
+                  <rect
+                    id="jar-swirl-fill"
+                    class="jar-swirl-fill"
+                    x="33"
+                    y="23"
+                    width="134"
+                    height="274"
+                    fill="#5C3D2E"
+                  />
+                </g>
+              </svg>
+              <p
+                class="text-center mt-4 text-xs tracking-widest uppercase text-primary/50 font-body"
+              >
+                Bean → Jar
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+     EXPERIENCE — HORIZONTAL SCROLL
+      ===================================================== -->
+      <section id="why" class="relative grad-dark">
+        <div id="experience-pin" class="h-screen overflow-hidden relative">
+          <div id="experience-track" class="h-full">
+            <!-- Panel 1 -->
+            <div class="exp-panel flex items-center justify-center relative">
+              <div class="text-center px-6">
+                <p
+                  class="eyebrow font-util text-xs text-gold mb-6"
+                  data-i18n="exp_eyebrow"
+                >
+                  Kenapa harus SLICO?
+                </p>
+                <h3
+                  class="font-display text-5xl md:text-7xl mb-4 text-white"
+                  data-i18n="exp_1_title"
+                >
+                  Tanpa Air Panas
+                </h3>
+                <p
+                  class="font-body text-white/80 max-w-md mx-auto"
+                  data-i18n="exp_1_desc"
+                >
+                  Lupakan ketel dan mesin espresso.
+                </p>
+              </div>
+            </div>
+
+            <!-- Panel 2 -->
+            <div class="exp-panel flex items-center justify-center relative">
+              <div class="text-center px-6">
+                <h3
+                  class="font-display text-5xl md:text-7xl mb-4 text-white"
+                  data-i18n="exp_2_title"
+                >
+                  Tanpa Menunggu
+                </h3>
+                <p
+                  class="font-body text-white/80 max-w-md mx-auto"
+                  data-i18n="exp_2_desc"
+                >
+                  Satu gigitan, kopi langsung terasa.
+                </p>
+              </div>
+            </div>
+
+            <!-- Panel 3 -->
+            <div class="exp-panel flex items-center justify-center relative">
+              <div class="text-center px-6">
+                <h3
+                  class="font-display text-5xl md:text-7xl mb-4 text-white"
+                  data-i18n="exp_3_title"
+                >
+                  Di Mana Saja
+                </h3>
+                <p
+                  class="font-body text-white/80 max-w-md mx-auto"
+                  data-i18n="exp_3_desc"
+                >
+                  Dari meja kerja hingga puncak gunung.
+                </p>
+              </div>
+            </div>
+
+            <!-- Panel 4 -->
+            <div class="exp-panel flex items-center justify-center relative">
+              <div class="text-center px-6">
+                <h3
+                  class="font-display text-5xl md:text-7xl mb-4 text-white"
+                  data-i18n="exp_4_title"
+                >
+                  Kapan Saja
+                </h3>
+                <p
+                  class="font-body text-white/80 max-w-md mx-auto"
+                  data-i18n="exp_4_desc"
+                >
+                  Pagi, siang, malam — SLICO selalu siap.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- decorative ring watermark -->
+          <svg
+            class="ring-spin absolute -right-24 -bottom-24 opacity-10"
+            width="420"
+            height="420"
+            viewBox="0 0 380 380"
+            style="animation-duration: 60s"
+          >
+            <circle
+              cx="190"
+              cy="190"
+              r="170"
+              fill="none"
+              stroke="#C6A15B"
+              stroke-width="1"
+            />
+            <circle
+              cx="190"
+              cy="190"
+              r="120"
+              fill="none"
+              stroke="#C6A15B"
+              stroke-width="1"
+            />
+            <circle
+              cx="190"
+              cy="190"
+              r="70"
+              fill="none"
+              stroke="#C6A15B"
+              stroke-width="1"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+     PRODUCT SHOWCASE
+     ========================================================================== -->
+      <section id="product" class="py-28 md:py-36 bg-cream">
+        <div class="max-w-7xl mx-auto px-6 md:px-10">
+          <div class="max-w-2xl mb-16">
+            <p
+              class="section-eyebrow reveal text-gold mb-4"
+              data-i18n="product_eyebrow"
+            >
+              The Collection
+            </p>
+            <h2
+              class="reveal font-display text-4xl md:text-5xl text-primary"
+              data-i18n="product_title"
+            >
+              Product Showcase
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="product-card reveal-scale">
+              <div
+                class="product-card-inner rounded-3xl bg-beige/30 p-8 text-center"
+              >
+                <div class="product-float mx-auto w-32">
+                  <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+                    <rect
+                      x="30"
+                      y="20"
+                      width="140"
+                      height="220"
+                      rx="20"
+                      fill="#FDF6EE"
+                      stroke="#5C3D2E"
+                      stroke-width="2"
+                    />
+                    <rect
+                      x="30"
+                      y="110"
+                      width="140"
+                      height="130"
+                      rx="20"
+                      fill="#5C3D2E"
+                    />
+                    <rect
+                      x="44"
+                      y="0"
+                      width="112"
+                      height="30"
+                      rx="8"
+                      fill="#C89B3C"
+                    />
+                  </svg>
+                  <svg
+                    class="product-reflection -mt-2"
+                    viewBox="0 0 200 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="30"
+                      y="0"
+                      width="140"
+                      height="60"
+                      rx="20"
+                      fill="#5C3D2E"
+                    />
+                  </svg>
+                </div>
+                <h3
+                  class="font-display text-2xl text-primary mt-6 mb-2"
+                  data-i18n="product_1_name"
+                >
+                  SLICO Original
+                </h3>
+                <p
+                  class="text-sm text-dark/65 mb-4 leading-relaxed"
+                  data-i18n="product_1_desc"
+                >
+                  Our signature blend — dark roast Java arabica folded into palm
+                  sugar and cultured butter.
+                </p>
+                <p
+                  class="font-display text-gold mb-5"
+                  data-i18n="product_price"
+                >
+                  From IDR 89.000
+                </p>
+                <a
+                  href="#cta"
+                  class="btn btn-outline px-6 py-2.5 rounded-full text-xs tracking-wide"
+                  data-i18n="product_btn"
+                  >View Details</a
+                >
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card reveal-scale" style="--d: 0.1s">
+              <div
+                class="product-card-inner rounded-3xl bg-beige/30 p-8 text-center"
+              >
+                <div
+                  class="product-float mx-auto w-32"
+                  style="animation-delay: 1.2s"
+                >
+                  <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+                    <rect
+                      x="30"
+                      y="20"
+                      width="140"
+                      height="220"
+                      rx="20"
+                      fill="#FDF6EE"
+                      stroke="#5C3D2E"
+                      stroke-width="2"
+                    />
+                    <rect
+                      x="30"
+                      y="110"
+                      width="140"
+                      height="130"
+                      rx="20"
+                      fill="#8B5A2B"
+                    />
+                    <rect
+                      x="44"
+                      y="0"
+                      width="112"
+                      height="30"
+                      rx="8"
+                      fill="#5C3D2E"
+                    />
+                  </svg>
+                  <svg
+                    class="product-reflection -mt-2"
+                    viewBox="0 0 200 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="30"
+                      y="0"
+                      width="140"
+                      height="60"
+                      rx="20"
+                      fill="#8B5A2B"
+                    />
+                  </svg>
+                </div>
+                <h3
+                  class="font-display text-2xl text-primary mt-6 mb-2"
+                  data-i18n="product_2_name"
+                >
+                  SLICO Gula Aren
+                </h3>
+                <p
+                  class="text-sm text-dark/65 mb-4 leading-relaxed"
+                  data-i18n="product_2_desc"
+                >
+                  A deeper, caramel-forward spread made with wild palm sugar
+                  from Mount Ciremai.
+                </p>
+                <p
+                  class="font-display text-gold mb-5"
+                  data-i18n="product_price"
+                >
+                  From IDR 89.000
+                </p>
+                <a
+                  href="#cta"
+                  class="btn btn-outline px-6 py-2.5 rounded-full text-xs tracking-wide"
+                  data-i18n="product_btn"
+                  >View Details</a
+                >
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card reveal-scale" style="--d: 0.2s">
+              <div
+                class="product-card-inner rounded-3xl bg-beige/30 p-8 text-center"
+              >
+                <div
+                  class="product-float mx-auto w-32"
+                  style="animation-delay: 2.4s"
+                >
+                  <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+                    <rect
+                      x="30"
+                      y="20"
+                      width="140"
+                      height="220"
+                      rx="20"
+                      fill="#FDF6EE"
+                      stroke="#5C3D2E"
+                      stroke-width="2"
+                    />
+                    <rect
+                      x="30"
+                      y="110"
+                      width="140"
+                      height="130"
+                      rx="20"
+                      fill="#2D2D2D"
+                    />
+                    <rect
+                      x="44"
+                      y="0"
+                      width="112"
+                      height="30"
+                      rx="8"
+                      fill="#C89B3C"
+                    />
+                  </svg>
+                  <svg
+                    class="product-reflection -mt-2"
+                    viewBox="0 0 200 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x="30"
+                      y="0"
+                      width="140"
+                      height="60"
+                      rx="20"
+                      fill="#2D2D2D"
+                    />
+                  </svg>
+                </div>
+                <h3
+                  class="font-display text-2xl text-primary mt-6 mb-2"
+                  data-i18n="product_3_name"
+                >
+                  SLICO Noir
+                </h3>
+                <p
+                  class="text-sm text-dark/65 mb-4 leading-relaxed"
+                  data-i18n="product_3_desc"
+                >
+                  Our boldest jar — concentrated cold-brew coffee folded into
+                  dark cacao butter.
+                </p>
+                <p
+                  class="font-display text-gold mb-5"
+                  data-i18n="product_price"
+                >
+                  From IDR 89.000
+                </p>
+                <a
+                  href="#cta"
+                  class="btn btn-outline px-6 py-2.5 rounded-full text-xs tracking-wide"
+                  data-i18n="product_btn"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+     INGREDIENTS / PROCESS TIMELINE
+     ========================================================================== -->
+      <section
+        id="ingredients"
+        class="py-28 md:py-36 bg-primary text-cream relative overflow-hidden"
+      >
+        <div class="max-w-7xl mx-auto px-6 md:px-10">
+          <div class="max-w-2xl mb-20">
+            <p
+              class="section-eyebrow reveal text-gold mb-4"
+              data-i18n="ingredients_eyebrow"
+            >
+              From Bean to Jar
+            </p>
+            <h2
+              class="reveal font-display text-4xl md:text-5xl"
+              data-i18n="ingredients_title"
+            >
+              The Ingredients &amp; Process
+            </h2>
+          </div>
+
+          <div id="ing-track" class="relative pl-16">
+            <div class="ing-line">
+              <div id="ing-line-fill" class="ing-line-fill"></div>
+            </div>
+
+            <div class="ing-step reveal relative mb-16">
+              <div class="ing-dot absolute -left-[46px] top-1.5"></div>
+              <span class="font-display text-gold/50 text-sm">01</span>
+              <h3
+                class="font-display text-2xl mt-2 mb-2"
+                data-i18n="ing_1_title"
+              >
+                Handpicked Cherries
+              </h3>
+              <p
+                class="text-cream/70 max-w-xl leading-relaxed"
+                data-i18n="ing_1_desc"
+              >
+                Only ripe, red arabica cherries are picked by hand across small
+                West Java farms.
+              </p>
+            </div>
+
+            <div class="ing-step reveal relative mb-16" style="--d: 0.05s">
+              <div class="ing-dot absolute -left-[46px] top-1.5"></div>
+              <span class="font-display text-gold/50 text-sm">02</span>
+              <h3
+                class="font-display text-2xl mt-2 mb-2"
+                data-i18n="ing_2_title"
+              >
+                Sun-Dried, Slowly
+              </h3>
+              <p
+                class="text-cream/70 max-w-xl leading-relaxed"
+                data-i18n="ing_2_desc"
+              >
+                Beans rest under the sun for up to three weeks, developing depth
+                before roasting.
+              </p>
+            </div>
+
+            <div class="ing-step reveal relative mb-16" style="--d: 0.1s">
+              <div class="ing-dot absolute -left-[46px] top-1.5"></div>
+              <span class="font-display text-gold/50 text-sm">03</span>
+              <h3
+                class="font-display text-2xl mt-2 mb-2"
+                data-i18n="ing_3_title"
+              >
+                Small-Batch Roasting
+              </h3>
+              <p
+                class="text-cream/70 max-w-xl leading-relaxed"
+                data-i18n="ing_3_desc"
+              >
+                Roasted below 10kg per batch over open flame, watched closely by
+                hand.
+              </p>
+            </div>
+
+            <div class="ing-step reveal relative mb-16" style="--d: 0.15s">
+              <div class="ing-dot absolute -left-[46px] top-1.5"></div>
+              <span class="font-display text-gold/50 text-sm">04</span>
+              <h3
+                class="font-display text-2xl mt-2 mb-2"
+                data-i18n="ing_4_title"
+              >
+                Stone-Ground &amp; Stirred
+              </h3>
+              <p
+                class="text-cream/70 max-w-xl leading-relaxed"
+                data-i18n="ing_4_desc"
+              >
+                Ground coarse, then folded by hand into palm sugar and cultured
+                butter in copper pans.
+              </p>
+            </div>
+
+            <div class="ing-step reveal relative" style="--d: 0.2s">
+              <div class="ing-dot absolute -left-[46px] top-1.5"></div>
+              <span class="font-display text-gold/50 text-sm">05</span>
+              <h3
+                class="font-display text-2xl mt-2 mb-2"
+                data-i18n="ing_5_title"
+              >
+                Rested &amp; Jarred
+              </h3>
+              <p
+                class="text-cream/70 max-w-xl leading-relaxed"
+                data-i18n="ing_5_desc"
+              >
+                Left to rest for 48 hours before being sealed in amber glass,
+                one jar at a time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+     HOW TO ENJOY
+     ========================================================================== -->
+      <section id="enjoy" class="py-28 md:py-36 bg-cream">
+        <div class="max-w-7xl mx-auto px-6 md:px-10">
+          <div class="max-w-2xl mb-16">
+            <p
+              class="section-eyebrow reveal text-gold mb-4"
+              data-i18n="enjoy_eyebrow"
+            >
+              A Simple Ritual
+            </p>
+            <h2
+              class="reveal font-display text-4xl md:text-5xl text-primary"
+              data-i18n="enjoy_title"
+            >
+              How To Enjoy
+            </h2>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="step-card reveal">
+              <div class="step-num text-6xl mb-4">01</div>
+              <h3
+                class="font-display text-xl text-primary mb-2"
+                data-i18n="enjoy_1_title"
+              >
+                Warm Your Bread
+              </h3>
+              <p
+                class="text-sm text-dark/65 leading-relaxed"
+                data-i18n="enjoy_1_desc"
+              >
+                Toast bread, a croissant, or steamed rice cake until just warm —
+                the spread wakes up with heat.
+              </p>
+            </div>
+            <div class="step-card reveal" style="--d: 0.08s">
+              <div class="step-num text-6xl mb-4">02</div>
+              <h3
+                class="font-display text-xl text-primary mb-2"
+                data-i18n="enjoy_2_title"
+              >
+                Spread Generously
+              </h3>
+              <p
+                class="text-sm text-dark/65 leading-relaxed"
+                data-i18n="enjoy_2_desc"
+              >
+                Take a spoonful of SLICO and spread it edge to edge. Don't be
+                shy with it.
+              </p>
+            </div>
+            <div class="step-card reveal" style="--d: 0.16s">
+              <div class="step-num text-6xl mb-4">03</div>
+              <h3
+                class="font-display text-xl text-primary mb-2"
+                data-i18n="enjoy_3_title"
+              >
+                Pair It Slowly
+              </h3>
+              <p
+                class="text-sm text-dark/65 leading-relaxed"
+                data-i18n="enjoy_3_desc"
+              >
+                Sit with black coffee or warm milk — SLICO is the flavour, not
+                the caffeine.
+              </p>
+            </div>
+            <div class="step-card reveal" style="--d: 0.24s">
+              <div class="step-num text-6xl mb-4">04</div>
+              <h3
+                class="font-display text-xl text-primary mb-2"
+                data-i18n="enjoy_4_title"
+              >
+                Share The Jar
+              </h3>
+              <p
+                class="text-sm text-dark/65 leading-relaxed"
+                data-i18n="enjoy_4_desc"
+              >
+                Pass it across the table. A jar of SLICO is always better
+                between two spoons.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+     GALLERY
+     ========================================================================== -->
+      <section id="gallery" class="py-28 md:py-36 bg-beige/40">
+        <div class="max-w-7xl mx-auto px-6 md:px-10">
+          <div class="max-w-2xl mb-16">
+            <p
+              class="section-eyebrow reveal text-gold mb-4"
+              data-i18n="gallery_eyebrow"
+            >
+              A Closer Look
+            </p>
+            <h2
+              class="reveal font-display text-4xl md:text-5xl text-primary"
+              data-i18n="gallery_title"
+            >
+              Gallery
+            </h2>
+          </div>
+
+          <div
+            class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-[220px]"
+          >
+            <div
+              class="gallery-item reveal-scale rounded-2xl row-span-2 bg-gradient-to-br from-[#5C3D2E] to-[#2D2D2D] relative"
+            >
+              <img
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'><rect width='400' height='600' fill='%235C3D2E'/><circle cx='200' cy='260' r='90' fill='%233A2419'/><circle cx='150' cy='210' r='16' fill='%23C89B3C' opacity='0.5'/><circle cx='250' cy='330' r='20' fill='%23C89B3C' opacity='0.5'/></svg>"
+                alt="Hand-roasted coffee beans"
+                class="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              />
+              <span
+                class="gallery-caption absolute bottom-4 left-4 text-cream text-sm font-sub italic"
+                data-i18n="gallery_1"
+                >Hand-roasted, batch by batch</span
+              >
+            </div>
+            <div
+              class="gallery-item reveal-scale rounded-2xl bg-gradient-to-br from-[#C89B3C] to-[#8B5A2B] relative"
+              style="--d: 0.05s"
+            >
+              <img
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23C89B3C'/><ellipse cx='200' cy='170' rx='110' ry='60' fill='%235C3D2E'/></svg>"
+                alt="Stirring coffee spread in copper pan"
+                class="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              />
+              <span
+                class="gallery-caption absolute bottom-4 left-4 text-cream text-sm font-sub italic"
+                data-i18n="gallery_2"
+                >Stirred in copper, the old way</span
+              >
+            </div>
+            <div
+              class="gallery-item reveal-scale rounded-2xl bg-gradient-to-br from-[#EADBC8] to-[#C89B3C] relative"
+              style="--d: 0.1s"
+            >
+              <img
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23EADBC8'/><rect x='140' y='60' width='120' height='190' rx='18' fill='%23FDF6EE' stroke='%235C3D2E' stroke-width='3'/><rect x='140' y='150' width='120' height='100' rx='18' fill='%235C3D2E'/></svg>"
+                alt="Jar sealed in amber glass"
+                class="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              />
+              <span
+                class="gallery-caption absolute bottom-4 left-4 text-primary text-sm font-sub italic"
+                data-i18n="gallery_3"
+                >Sealed in amber glass</span
+              >
+            </div>
+            <div
+              class="gallery-item reveal-scale rounded-2xl row-span-2 bg-gradient-to-br from-[#2D2D2D] to-[#5C3D2E] relative"
+              style="--d: 0.15s"
+            >
+              <img
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'><rect width='400' height='600' fill='%232D2D2D'/><path d='M0 420 Q100 380 200 420 T400 420 V600 H0 Z' fill='%235C3D2E'/><circle cx='120' cy='200' r='36' fill='%23C89B3C' opacity='0.4'/><circle cx='260' cy='260' r='28' fill='%23C89B3C' opacity='0.3'/></svg>"
+                alt="West Java coffee highlands"
+                class="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              />
+              <span
+                class="gallery-caption absolute bottom-4 left-4 text-cream text-sm font-sub italic"
+                data-i18n="gallery_4"
+                >Grown across West Java's highlands</span
+              >
+            </div>
+            <div
+              class="gallery-item reveal-scale rounded-2xl bg-gradient-to-br from-[#5C3D2E] to-[#C89B3C] relative"
+              style="--d: 0.2s"
+            >
+              <img
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%235C3D2E'/><rect x='60' y='140' width='280' height='16' rx='8' fill='%23C89B3C'/><circle cx='320' cy='148' r='22' fill='%23EADBC8'/></svg>"
+                alt="Spreading SLICO on toast"
+                class="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              />
+              <span
+                class="gallery-caption absolute bottom-4 left-4 text-cream text-sm font-sub italic"
+                data-i18n="gallery_5"
+                >Spread slowly, shared often</span
+              >
+            </div>
+            <div
+              class="gallery-item reveal-scale rounded-2xl bg-gradient-to-br from-[#8B5A2B] to-[#2D2D2D] relative"
+              style="--d: 0.25s"
+            >
+              <img
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%238B5A2B'/><circle cx='200' cy='150' r='70' fill='%23FDF6EE' opacity='0.9'/><circle cx='200' cy='150' r='50' fill='%235C3D2E'/></svg>"
+                alt="A jar of SLICO every morning"
+                class="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              />
+              <span
+                class="gallery-caption absolute bottom-4 left-4 text-cream text-sm font-sub italic"
+                data-i18n="gallery_6"
+                >One jar, every morning</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lightbox -->
+      <div id="lightbox">
+        <button
+          id="lightbox-close"
+          class="absolute top-6 right-6 text-cream text-3xl leading-none w-11 h-11 flex items-center justify-center rounded-full border border-cream/30 hover:bg-cream/10 transition"
+          aria-label="Close"
+        >
+          &times;
+        </button>
+        <img id="lightbox-img" src="" alt="" class="rounded-lg" />
+      </div>
+
+      <!-- ==========================================================================
+     TESTIMONIALS
+     ========================================================================== -->
+      <section
+        id="testimonials"
+        class="py-28 md:py-36 bg-cream overflow-hidden"
+      >
+        <div class="max-w-7xl mx-auto px-6 md:px-10">
+          <div class="max-w-2xl mb-16">
+            <p
+              class="section-eyebrow reveal text-gold mb-4"
+              data-i18n="testi_eyebrow"
+            >
+              In Their Words
+            </p>
+            <h2
+              class="reveal font-display text-4xl md:text-5xl text-primary"
+              data-i18n="testi_title"
+            >
+              Testimonials
+            </h2>
+          </div>
+
+          <div class="swiper testi-swiper reveal">
+            <div class="swiper-wrapper pb-14">
+              <div class="swiper-slide">
+                <div class="glass-card rounded-2xl p-8 h-full flex flex-col">
+                  <div class="stars mb-4">★★★★★</div>
+                  <p
+                    class="font-sub italic text-lg text-dark/80 mb-6 leading-relaxed flex-1"
+                    data-i18n="testi_1"
+                  >
+                    The most honest coffee product I've brought home from
+                    Indonesia. It tastes like someone's actual kitchen.
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center font-display text-primary"
+                    >
+                      A
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium" data-i18n="testi_1_name">
+                        Amara L.
+                      </p>
+                      <p class="text-xs text-dark/50" data-i18n="testi_1_loc">
+                        Amsterdam, Netherlands
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="glass-card rounded-2xl p-8 h-full flex flex-col">
+                  <div class="stars mb-4">★★★★★</div>
+                  <p
+                    class="font-sub italic text-lg text-dark/80 mb-6 leading-relaxed flex-1"
+                    data-i18n="testi_2"
+                  >
+                    I keep a jar at my desk. The aroma alone is worth the
+                    shipping.
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center font-display text-primary"
+                    >
+                      K
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium" data-i18n="testi_2_name">
+                        Kenji T.
+                      </p>
+                      <p class="text-xs text-dark/50" data-i18n="testi_2_loc">
+                        Osaka, Japan
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="glass-card rounded-2xl p-8 h-full flex flex-col">
+                  <div class="stars mb-4">★★★★★</div>
+                  <p
+                    class="font-sub italic text-lg text-dark/80 mb-6 leading-relaxed flex-1"
+                    data-i18n="testi_3"
+                  >
+                    Gula Aren is unlike anything I've tasted — deep, smoky,
+                    quietly sweet.
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center font-display text-primary"
+                    >
+                      S
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium" data-i18n="testi_3_name">
+                        Sofia R.
+                      </p>
+                      <p class="text-xs text-dark/50" data-i18n="testi_3_loc">
+                        Lisbon, Portugal
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="glass-card rounded-2xl p-8 h-full flex flex-col">
+                  <div class="stars mb-4">★★★★★</div>
+                  <p
+                    class="font-sub italic text-lg text-dark/80 mb-6 leading-relaxed flex-1"
+                    data-i18n="testi_4"
+                  >
+                    Packaging alone feels premium. What's inside is even better.
+                  </p>
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center font-display text-primary"
+                    >
+                      D
+                    </div>
+                    <div>
+                      <p class="text-sm font-medium" data-i18n="testi_4_name">
+                        Daniel K.
+                      </p>
+                      <p class="text-xs text-dark/50" data-i18n="testi_4_loc">
+                        Melbourne, Australia
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+          <!-- Trust counters -->
+          <div
+            class="grid grid-cols-3 gap-6 max-w-2xl mx-auto mt-8 text-center"
+          >
+            <div>
+              <div
+                class="counter text-3xl md:text-4xl text-primary"
+                data-target="12000"
+                data-suffix="+"
+              >
+                0
+              </div>
+              <p class="text-xs tracking-wide text-dark/50 mt-1">
+                Jars Shipped
+              </p>
+            </div>
+            <div>
+              <div
+                class="counter text-3xl md:text-4xl text-primary"
+                data-target="24"
+                data-suffix=""
+              >
+                0
+              </div>
+              <p class="text-xs tracking-wide text-dark/50 mt-1">Countries</p>
+            </div>
+            <div>
+              <div
+                class="counter text-3xl md:text-4xl text-primary"
+                data-target="3"
+                data-suffix=""
+              >
+                0
+              </div>
+              <p class="text-xs tracking-wide text-dark/50 mt-1">Generations</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+     FAQ
+     ========================================================================== -->
+      <section id="faq" class="py-28 md:py-36 bg-beige/40">
+        <div class="max-w-4xl mx-auto px-6 md:px-10">
+          <div class="max-w-2xl mb-14">
+            <p
+              class="section-eyebrow reveal text-gold mb-4"
+              data-i18n="faq_eyebrow"
+            >
+              Good To Know
+            </p>
+            <h2
+              class="reveal font-display text-4xl md:text-5xl text-primary"
+              data-i18n="faq_title"
+            >
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div class="reveal">
+            <div class="faq-item py-6">
+              <div class="faq-question flex items-center justify-between gap-6">
+                <h3
+                  class="font-display text-lg md:text-xl text-primary"
+                  data-i18n="faq_1_q"
+                >
+                  Is SLICO a drink or a spread?
+                </h3>
+                <span class="faq-icon text-gold text-2xl shrink-0">+</span>
+              </div>
+              <div class="faq-answer">
+                <p
+                  class="text-dark/65 leading-relaxed pt-3"
+                  data-i18n="faq_1_a"
+                >
+                  SLICO is a coffee spread — meant to be spread on bread,
+                  pastries, or rice cakes, not brewed or diluted with water.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item py-6">
+              <div class="faq-question flex items-center justify-between gap-6">
+                <h3
+                  class="font-display text-lg md:text-xl text-primary"
+                  data-i18n="faq_2_q"
+                >
+                  Does it contain caffeine?
+                </h3>
+                <span class="faq-icon text-gold text-2xl shrink-0">+</span>
+              </div>
+              <div class="faq-answer">
+                <p
+                  class="text-dark/65 leading-relaxed pt-3"
+                  data-i18n="faq_2_a"
+                >
+                  Yes, a small amount from the coffee grounds folded into the
+                  spread — noticeably gentler than a cup of brewed coffee.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item py-6">
+              <div class="faq-question flex items-center justify-between gap-6">
+                <h3
+                  class="font-display text-lg md:text-xl text-primary"
+                  data-i18n="faq_3_q"
+                >
+                  How long does a jar last once opened?
+                </h3>
+                <span class="faq-icon text-gold text-2xl shrink-0">+</span>
+              </div>
+              <div class="faq-answer">
+                <p
+                  class="text-dark/65 leading-relaxed pt-3"
+                  data-i18n="faq_3_a"
+                >
+                  Best enjoyed within 30 days of opening, kept sealed and
+                  refrigerated after first use.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item py-6">
+              <div class="faq-question flex items-center justify-between gap-6">
+                <h3
+                  class="font-display text-lg md:text-xl text-primary"
+                  data-i18n="faq_4_q"
+                >
+                  Do you ship internationally?
+                </h3>
+                <span class="faq-icon text-gold text-2xl shrink-0">+</span>
+              </div>
+              <div class="faq-answer">
+                <p
+                  class="text-dark/65 leading-relaxed pt-3"
+                  data-i18n="faq_4_a"
+                >
+                  Yes. SLICO ships worldwide from West Java, with insulated
+                  packaging for warmer climates.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item py-6">
+              <div class="faq-question flex items-center justify-between gap-6">
+                <h3
+                  class="font-display text-lg md:text-xl text-primary"
+                  data-i18n="faq_5_q"
+                >
+                  Is SLICO suitable for vegetarians?
+                </h3>
+                <span class="faq-icon text-gold text-2xl shrink-0">+</span>
+              </div>
+              <div class="faq-answer">
+                <p
+                  class="text-dark/65 leading-relaxed pt-3"
+                  data-i18n="faq_5_a"
+                >
+                  Yes — SLICO contains dairy butter but no meat or
+                  animal-derived gelatin.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+     CALL TO ACTION
+     ========================================================================== -->
+      <section id="cta" class="py-28 md:py-40 text-center text-cream">
+        <div class="cta-beam"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-6">
+          <p class="section-eyebrow reveal text-gold mb-6">SLICO</p>
+          <h2
+            class="reveal font-display text-3xl sm:text-4xl md:text-5xl leading-tight mb-6"
+            data-i18n="cta_title"
+          >
+            Experience Indonesian Coffee, Crafted with Passion.
+          </h2>
+          <p
+            class="reveal text-cream/70 mb-10 text-base md:text-lg"
+            data-i18n="cta_sub"
+          >
+            One jar. Three generations of craft. Delivered to your door.
+          </p>
+          <a
+            href="#"
+            class="btn btn-gold reveal px-10 py-4 rounded-full text-sm tracking-wide inline-flex"
+            data-i18n="cta_btn"
+            >Order Now</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+    <footer class="bg-dark text-cream/70 pt-20 pb-8">
+      <div
+        class="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-4 gap-12 mb-16"
+      >
+        <div class="md:col-span-2">
+          <p class="font-display text-2xl text-cream mb-4">SLICO</p>
+          <p class="text-sm max-w-xs leading-relaxed" data-i18n="footer_desc">
+            A premium Indonesian coffee spread, hand-crafted in small batches
+            and shared around the world.
+          </p>
+        </div>
+        <div>
+          <p
+            class="text-xs tracking-widest uppercase text-cream/40 mb-4"
+            data-i18n="footer_explore"
+          >
+            Explore
+          </p>
+          <ul class="space-y-2.5 text-sm">
+            <li>
+              <a
+                href="#story"
+                class="hover:text-gold transition"
+                data-i18n="nav_story"
+                >Story</a
+              >
+            </li>
+            <li>
+              <a
+                href="#why"
+                class="hover:text-gold transition"
+                data-i18n="nav_why"
+                >Why SLICO</a
+              >
+            </li>
+            <li>
+              <a
+                href="#product"
+                class="hover:text-gold transition"
+                data-i18n="nav_product"
+                >Product</a
+              >
+            </li>
+            <li>
+              <a
+                href="#faq"
+                class="hover:text-gold transition"
+                data-i18n="nav_faq"
+                >FAQ</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p
+            class="text-xs tracking-widest uppercase text-cream/40 mb-4"
+            data-i18n="footer_contact"
+          >
+            Contact
+          </p>
+          <ul class="space-y-2.5 text-sm mb-6">
+            <li>hello@SLICO.id</li>
+            <li>+62 812 3456 7890</li>
+          </ul>
+          <div class="lang-switch flex items-center gap-2 text-sm">
+            <button data-lang="id" class="px-2 py-1 text-cream/70">ID</button>
+            <span class="opacity-30">/</span>
+            <button data-lang="en" class="px-2 py-1 active text-cream/70">
+              EN
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-6 md:px-10 pt-6 border-t border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream/40"
+      >
+        <p>
+          &copy; <span id="year">2026</span> SLICO.
+          <span data-i18n="footer_rights">All rights reserved.</span>
+        </p>
+        <div class="flex items-center gap-5">
+          <p data-i18n="footerTagline">Nikmati Kopi, Tanpa Diseduh.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating buttons -->
+    <a
+      id="whatsapp-btn"
+      href="https://wa.me/6281234567890"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.61 0-3.1-.47-4.36-1.27l-.31-.19-3 .79.8-2.93-.2-.31A7.94 7.94 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.4-5.6c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.15-.06-.1-.22-.16-.46-.28z"
+        />
+      </svg>
+    </a>
+    <button id="back-to-top" aria-label="Back to top">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
